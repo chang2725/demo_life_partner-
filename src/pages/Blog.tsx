@@ -5,10 +5,11 @@ import { Badge } from '@/components/ui/badge';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { API_BASE_URL, AgentId } from "@/pages/config";
+import Head from 'next/head';
+
 
 const Blog = () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
-  const AgentId = import.meta.env.VITE_API_AUTH_TOKEN || 'http://localhost:3000/api';
   const [blogPosts, setBlogPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -161,6 +162,47 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white">
+
+<Head>
+  <title>LIC Insurance Blog — Tips & Insights</title>
+  <meta name="description" content="Read expert LIC articles, policy tips, tax insights, and claim guides to make smarter insurance decisions." />
+  <meta name="keywords" content="LIC blog, LIC articles, insurance tips, LIC tax benefits, LIC claim guide, LIC policy advice, LIC news, policy insights" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/blog" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="LIC Insurance Blog — Tips & Insights" />
+  <meta property="og:description" content="Expert articles on LIC policies, tax benefits, claims, and planning — practical tips for policyholders." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/blog" />
+  <meta property="og:image" content="https://lifecodeacademyinnovations.vercel.app/og-blog.jpg" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LIC Insurance Blog — Tips & Insights" />
+  <meta name="twitter:description" content="Expert LIC articles and practical tips to help you choose and manage policies better." />
+  <meta name="twitter:image" content="https://lifecodeacademyinnovations.vercel.app/og-blog.jpg" />
+
+  {/* JSON-LD: Blog (index) */}
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "LIC Insurance Blog — Rajesh Kumar",
+        "url": "https://lifecodeacademyinnovations.vercel.app/blog",
+        "description": "Expert articles on LIC policies, tax benefits, claims, riders, and policy management.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Rajesh Kumar - LIC Agent",
+          "logo": { "@type": "ImageObject", "url": "https://lifecodeacademyinnovations.vercel.app/logo.png" }
+        }
+      })
+    }}
+  />
+</Head>
+
       {/* Enhanced Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-24 overflow-hidden">
         {/* Background Pattern */}

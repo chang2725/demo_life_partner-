@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Shield, Users, Award, Heart, Phone, CheckCircle, Star, Sparkles, Zap, Send, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +9,9 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { API_BASE_URL, AgentId } from "@/pages/config";
+import Head from 'next/head';
+
 
 
 const Home = () => {
@@ -20,8 +23,7 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const [testimonials, setTestimonials] = useState([]);
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
-  const AgentId = import.meta.env.VITE_API_AUTH_TOKEN;
+
   const [formData, setFormData] = useState({
     fullName: '',
     phoneNumber: '',
@@ -31,7 +33,7 @@ const Home = () => {
     message: '',
     agentId: AgentId, // Assuming agentId is 1 for now — fetch dynamically if needed
   });
-const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (field) => (e) => {
     setFormData({ ...formData, [field]: e.target.value });
@@ -41,56 +43,56 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     setFormData({ ...formData, serviceRequired: value });
   };
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  const payload = {
-    name: formData.fullName,
-    phoneNumber: formData.phoneNumber,
-    emailId: formData.email,
-    serviceRequired: formData.serviceRequired,
-    messageText: formData.message,
-    agentId: formData.agentId,
-    status: "Y"
-  };
+    const payload = {
+      name: formData.fullName,
+      phoneNumber: formData.phoneNumber,
+      emailId: formData.email,
+      serviceRequired: formData.serviceRequired,
+      messageText: formData.message,
+      agentId: formData.agentId,
+      status: "Y"
+    };
 
-  try {
-    const response = await axios.post(`${API_BASE_URL}api/ContactDetail`, payload);
-    console.log('Success:', response.data);
-    alert('✅ Your message has been sent successfully!');
-    setFormData({
-      fullName: '',
-      phoneNumber: '',
-      email: '',
-      age: '',
-      serviceRequired: '',
-      message: '',
-      agentId: formData.agentId, // Keep agentId pre-filled
-    });
-  } catch (error) {
-    console.error('Error:', error);
-    alert('❌ Failed to send message. Please check your details and try again.');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
-  useEffect(() => {
-  const fetchTestimonials = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/Testimonial/agent/${AgentId}`);
-      if (response.data?.data) {
-        setTestimonials(response.data.data);
-      } else {
-        console.warn('No testimonials data received:', response.data);
-      }
+      const response = await axios.post(`${API_BASE_URL}api/ContactDetail`, payload);
+      console.log('Success:', response.data);
+      alert('✅ Your message has been sent successfully!');
+      setFormData({
+        fullName: '',
+        phoneNumber: '',
+        email: '',
+        age: '',
+        serviceRequired: '',
+        message: '',
+        agentId: formData.agentId, // Keep agentId pre-filled
+      });
     } catch (error) {
-      console.error('❌ Failed to load testimonials:', error);
+      console.error('Error:', error);
+      alert('❌ Failed to send message. Please check your details and try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  fetchTestimonials();
-}, [AgentId]);
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/Testimonial/agent/${AgentId}`);
+        if (response.data?.data) {
+          setTestimonials(response.data.data);
+        } else {
+          console.warn('No testimonials data received:', response.data);
+        }
+      } catch (error) {
+        console.error('❌ Failed to load testimonials:', error);
+      }
+    };
+
+    fetchTestimonials();
+  }, [AgentId]);
 
   // Handle auto slide
   useEffect(() => {
@@ -154,57 +156,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     }
   ];
 
-  // const  = [
-  //   {
-  //     name: 'Priya Sharma',
-  //     location: 'Mumbai',
-  //     text: 'Rathi ji helped us choose the perfect policy for our family. His guidance during the claim process was invaluable.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Amit Patel',
-  //     location: 'Delhi',
-  //     text: 'Professional, trustworthy, and always available. Got my policy within a week with all documents sorted.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Sunita Devi',
-  //     location: 'Bangalore',
-  //     text: 'Excellent service! Rathi explained all policy details clearly and helped me save on premiums.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Amit Patel',
-  //     location: 'Delhi',
-  //     text: 'Professional, trustworthy, and always available. Got my policy within a week with all documents sorted.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Sunita Devi',
-  //     location: 'Bangalore',
-  //     text: 'Excellent service! Rathi explained all policy details clearly and helped me save on premiums.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Sunita Devi',
-  //     location: 'Bangalore',
-  //     text: 'Excellent service! Rathi explained all policy details clearly and helped me save on premiums.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Amit Patel',
-  //     location: 'Delhi',
-  //     text: 'Professional, trustworthy, and always available. Got my policy within a week with all documents sorted.',
-  //     rating: 5
-  //   },
-  //   {
-  //     name: 'Sunita Devi',
-  //     location: 'Bangalore',
-  //     text: 'Excellent service! Rathi explained all policy details clearly and helped me save on premiums.',
-  //     rating: 5
-  //   }
-  // ];
-
   const whyChooseUs = [
     { text: 'Fresh & Dedicated', icon: Award },
     { text: 'Certified LIC Agent', icon: CheckCircle },
@@ -239,8 +190,8 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                 <Star
                   key={i}
                   className={`h-5 w-5 ${i < testimonial.rating
-                      ? 'text-yellow-400 fill-current'
-                      : 'text-gray-300'
+                    ? 'text-yellow-400 fill-current'
+                    : 'text-gray-300'
                     }`}
                 />
               ))}
@@ -276,6 +227,47 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
     <div className="relative overflow-hidden">
+      <Head>
+        <title>Trusted LIC Agent in Bangalore — Rajesh Kumar</title>
+        <meta name="description" content="Get personalised LIC life insurance plans in Bangalore with Rajesh Kumar. Free consultation, claim support & policy reviews. Call now." />
+        <meta name="keywords" content="LIC agent Bangalore, Rajesh Kumar LIC agent, life insurance Bangalore, LIC policies Bangalore, term insurance Bangalore, endowment plans LIC, policy renewal Bangalore, claim assistance LIC, LIC advisor Bangalore" />
+
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Trusted LIC Agent in Bangalore — Rajesh Kumar" />
+        <meta property="og:description" content="Get personalised LIC life insurance plans in Bangalore with Rajesh Kumar. Free consultation, claim support & policy reviews. Call now." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/" />
+
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Trusted LIC Agent in Bangalore — Rajesh Kumar" />
+        <meta name="twitter:description" content="Get personalised LIC life insurance plans in Bangalore with Rajesh Kumar. Free consultation, claim support & policy reviews. Call now." />
+
+
+        {/* Canonical (adjust if this is not the homepage) */}
+        <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/" />
+
+
+        {/* JSON-LD LocalBusiness (replace phone/email if desired) */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "InsuranceAgency",
+            "name": "Rajesh Kumar - LIC Agent",
+            "url": "https://lifecodeacademyinnovations.vercel.app/",
+            "telephone": "REPLACE_PHONE",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bangalore",
+              "addressRegion": "Karnataka",
+              "addressCountry": "IN"
+            }
+          })
+        }} />
+      </Head>
+
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0s' }}></div>
       <div className="absolute top-40 right-20 w-16 h-16 bg-purple-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '1s' }}></div>
@@ -324,7 +316,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                  <Link to="/contact">
+                  <Link href="/contact">
                     Get Free Quote <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -437,7 +429,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
                     {category.description}
                   </CardDescription>
                   <Button asChild variant="outline" className="group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white group-hover:border-transparent transition-all duration-300 hover:scale-105">
-                    <Link to={category.link}>
+                    <Link href={category.link}>
                       Learn More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
                   </Button>
@@ -489,7 +481,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
             ))}
           </div>
 
-            <br/>
+          <br />
 
           {/* Desktop Grid */}
           <div className="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -497,8 +489,8 @@ const [isSubmitting, setIsSubmitting] = useState(false);
               <div
                 key={index}
                 className={`transition-all duration-700 ${isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-10'
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
                   }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -553,68 +545,68 @@ const [isSubmitting, setIsSubmitting] = useState(false);
       </section>
 
       {/* Quick Contact Form */}
-       <section className="py-16 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden">
-      <div className="absolute inset-0 bg-black/20"></div>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div ref={contactAnimation.ref} className={`text-center mb-8 transition-all duration-1000 ${contactAnimation.isVisible ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl font-bold text-white mb-4">Get Your Free Quote Today 🎯</h2>
-          <p className="text-xl text-blue-100">Fill out the form below and we'll get back to you within 24 hours</p>
-          <div className="mt-6 p-4 bg-white/10 rounded-xl backdrop-blur-sm">
-            <p className="text-white font-semibold">📞 Call directly: <a href="tel:+919901997606" className="text-yellow-300 hover:text-yellow-200 transition-colors">+91 99019 97606</a></p>
-            <p className="text-blue-100 text-sm mt-1">Available: Mon-Sun, 6:00 AM to 11:00 PM</p>
+      <section className="py-16 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div ref={contactAnimation.ref} className={`text-center mb-8 transition-all duration-1000 ${contactAnimation.isVisible ? 'animate-slide-up opacity-100' : 'opacity-0 translate-y-10'}`}>
+            <h2 className="text-4xl font-bold text-white mb-4">Get Your Free Quote Today 🎯</h2>
+            <p className="text-xl text-blue-100">Fill out the form below and we'll get back to you within 24 hours</p>
+            <div className="mt-6 p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+              <p className="text-white font-semibold">📞 Call directly: <a href="tel:+919901997606" className="text-yellow-300 hover:text-yellow-200 transition-colors">+91 99019 97606</a></p>
+              <p className="text-blue-100 text-sm mt-1">Available: Mon-Sun, 6:00 AM to 11:00 PM</p>
+            </div>
           </div>
+          <Card className="border-0 shadow-2xl backdrop-blur-sm bg-white/95 hover:bg-white transition-all duration-300 hover:scale-[1.02]">
+            <CardContent className="p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="group">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                    <Input value={formData.fullName} onChange={handleChange('fullName')} required placeholder="Enter your full name" />
+                  </div>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                    <Input value={formData.phoneNumber} onChange={handleChange('phoneNumber')} required placeholder="Enter your phone number" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="group">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                    <Input type="email" value={formData.email} onChange={handleChange('email')} required placeholder="Enter your email" />
+                  </div>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                    <Input value={formData.age} onChange={handleChange('age')} placeholder="Enter your age" />
+                  </div>
+                </div>
+                <div className="group">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Service Required</label>
+                  <Select onValueChange={handleServiceChange}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select the service you need" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {services.map((service) => (
+                        <SelectItem key={service} value={service}>{service}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="group">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                  <Textarea value={formData.message} onChange={handleChange('message')} required rows={5} placeholder="Tell me about your insurance requirements, questions, or how I can help you..." />
+                </div>
+                <div className="flex items-start space-x-2">
+                  <label htmlFor="consent" className="text-sm text-gray-600">I agree to be contacted regarding LIC policies and services. Your information will be kept confidential. 🔒</label>
+                </div>
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                  {isSubmitting ? 'Sending...' : <>Send Message <Send className="ml-2 h-5 w-5" /></>}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
-        <Card className="border-0 shadow-2xl backdrop-blur-sm bg-white/95 hover:bg-white transition-all duration-300 hover:scale-[1.02]">
-          <CardContent className="p-8">
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                  <Input value={formData.fullName} onChange={handleChange('fullName')} required placeholder="Enter your full name" />
-                </div>
-                <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                  <Input value={formData.phoneNumber} onChange={handleChange('phoneNumber')} required placeholder="Enter your phone number" />
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                  <Input type="email" value={formData.email} onChange={handleChange('email')} required placeholder="Enter your email" />
-                </div>
-                <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Age</label>
-                  <Input value={formData.age} onChange={handleChange('age')} placeholder="Enter your age" />
-                </div>
-              </div>
-              <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Service Required</label>
-                <Select onValueChange={handleServiceChange}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select the service you need" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {services.map((service) => (
-                      <SelectItem key={service} value={service}>{service}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                <Textarea value={formData.message} onChange={handleChange('message')} required rows={5} placeholder="Tell me about your insurance requirements, questions, or how I can help you..." />
-              </div>
-              <div className="flex items-start space-x-2">
-                <label htmlFor="consent" className="text-sm text-gray-600">I agree to be contacted regarding LIC policies and services. Your information will be kept confidential. 🔒</label>
-              </div>
-              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
-                {isSubmitting ? 'Sending...' : <>Send Message <Send className="ml-2 h-5 w-5" /></>}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

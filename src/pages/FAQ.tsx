@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp, Search, HelpCircle, Phone, MessageCircle, Filte
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Head from 'next/head';
 
 const FAQ = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -181,6 +182,161 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <Head>
+  <title>LIC FAQ & Policy Guide | Expert Insurance Answers</title>
+  <meta name="description" content="Get expert answers to LIC policy FAQs — from premiums, tax benefits, and claims to riders and policy loans. Trusted guidance for your insurance journey." />
+  <meta name="keywords" content="LIC policy FAQ, LIC insurance questions, LIC premium payment options, LIC tax benefits 80C, LIC claims process, LIC online policy status, LIC riders and add-ons, LIC surrender and revival, LIC maturity benefits, LIC loan against policy, LIC digital services, LIC agent support" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/faq" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="LIC FAQ & Policy Guide | Expert Insurance Answers" />
+  <meta property="og:description" content="Get expert answers to LIC policy FAQs — from premiums, tax benefits, and claims to riders and policy loans. Trusted guidance for your insurance journey." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/faq" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LIC FAQ & Policy Guide | Expert Insurance Answers" />
+  <meta name="twitter:description" content="Get expert answers to LIC policy FAQs — premiums, tax benefits, claims, riders & more. Trusted guidance for policyholders." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+
+  {/* Structured data — FAQPage (useful for rich snippets) */}
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between term insurance and endowment plans?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Term insurance provides pure life cover without any investment component at very affordable premiums. If you survive the policy term, you get nothing back. Endowment plans combine insurance with investment - you get life cover plus guaranteed returns with bonuses. Premiums are higher but you receive maturity benefits if you survive the term."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What tax benefits do I get with LIC policies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LIC policies offer dual tax benefits: premium paid qualifies for deduction up to ₹1.5 lakh under Section 80C. Maturity amount and death benefits are tax-free under Section 10(10D) if premium doesn't exceed specified limits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I pay premiums monthly instead of annually?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, LIC offers flexible premium payment options - annual, half-yearly, quarterly, and monthly. Annual payment is most economical while monthly payments are convenient but slightly more due to administrative charges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I check my policy status online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can check policy status through the LIC official website, customer portal after registration, LIC mobile app, or SMS service. You can view premium due dates, bonus declarations, policy statements, and fund values."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What documents are required for claim settlement?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For death claims: Original policy document, death certificate, claim form, hospital records (if applicable), police FIR (for unnatural death), nominee's ID and bank details. For maturity claims: policy document, discharge form, identity proof, and bank details."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I take a loan against my LIC policy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, loans are available against policies that have acquired surrender value (typically after 2-3 years). Loan amount depends on surrender value and can be up to ~90% of it; interest is charged on outstanding loan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the maximum age for buying LIC policies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Maximum entry age varies by policy: Term plans around 65 years, Endowment plans ~59 years, Pension plans up to 79 years, and immediate annuity plans up to 85 years. Exact ages depend on the policy rules."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I increase my coverage amount after buying the policy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You cannot increase sum assured of an existing policy; you can buy additional policies, add riders, or use increase options available in some plans."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if I stop paying premiums?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If premiums stop after policy has surrender value, it becomes paid-up with reduced benefits. You can revive within a specified period by paying due premiums with interest. If stopped before surrender value, the policy may lapse."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are bonuses declared on LIC policies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LIC declares bonuses annually based on investment performance and actuarial surplus. Reversionary bonuses are added yearly; terminal bonus may be added at maturity for long-term policies."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When is medical examination required for LIC policies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medical exams depend on age, sum assured, and health declaration. Generally required for higher sums assured or older ages; smaller amounts and younger applicants may only need a declaration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What riders can I add to my LIC policy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Popular riders: Accident Benefit, Disability Benefit (premium waiver), Critical Illness, and Term Rider. Riders add protection at a small extra premium."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I change the nominee in my LIC policy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — nomination can be changed any time by submitting the nomination change form and required documents. You can have multiple nominees with specified percentage shares."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I transfer my policy to another person?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Policies can be assigned (transferred) in writing and registered with LIC; assignments are typically for loan security or gifting to family members and require legal documentation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What digital services does LIC offer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LIC provides online purchase, premium payment, policy status checks, fund switching for ULIPs, address changes, document downloads, complaint registration, and mobile app services."
+            }
+          }
+        ]
+      })
+    }}
+  />
+</Head>
+
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-24 overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>

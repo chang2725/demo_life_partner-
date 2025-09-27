@@ -2,13 +2,14 @@ import { Shield, TrendingUp, Banknote, Users, Clock, CheckCircle, ArrowRight, He
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';;
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { API_BASE_URL, AgentId } from "@/pages/config";
+import Head from 'next/head';
+
 
 const LifeInsurance = () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
-  const AgentId = import.meta.env.VITE_API_AUTH_TOKEN || '2';
   const [policies, setPolicies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -112,6 +113,72 @@ const LifeInsurance = () => {
 
   return (
     <div>
+      <Head>
+        <title>LIC Life Insurance Plans — Term, Endowment & Pension</title>
+        <meta
+          name="description"
+          content="Explore LIC term, endowment & pension plans. Get expert guidance from Rajesh Kumar — free consultation & quotes in Bangalore."
+        />
+        <meta
+          name="keywords"
+          content="LIC life insurance, LIC plans, term insurance Bangalore, LIC endowment plans, pension plans LIC, buy LIC policy, LIC policy features, LIC claim support, LIC policy comparison, LIC agent Bangalore, life insurance quotes"
+        />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/life-insurance" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="LIC Life Insurance Plans — Term, Endowment & Pension" />
+        <meta
+          property="og:description"
+          content="Explore LIC term, endowment & pension plans. Expert guidance, comparisons, and quotes to secure your family's future."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/life-insurance" />
+        <meta property="og:image" content="OG_IMAGE_URL" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="LIC Life Insurance Plans — Term, Endowment & Pension" />
+        <meta
+          name="twitter:description"
+          content="Compare LIC plans and get tailored recommendations. Free quotes & policy help from Rajesh Kumar in Bangalore."
+        />
+        <meta name="twitter:image" content="OG_IMAGE_URL" />
+
+        {/* JSON-LD: InsuranceAgency + sample InsuranceProduct (paste-ready; edit to include real policy data) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "InsuranceAgency",
+                  "@id": "https://lifecodeacademyinnovations.vercel.app/#insurance",
+                  "name": "Rajesh Kumar - LIC Agent",
+                  "url": "https://lifecodeacademyinnovations.vercel.app/",
+                  "logo": "https://lifecodeacademyinnovations.vercel.app/logo.png",
+                  "telephone": "REPLACE_PHONE",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Bangalore",
+                    "addressRegion": "Karnataka",
+                    "addressCountry": "IN"
+                  }
+                },
+                {
+                  "@type": "InsuranceProduct",
+                  "name": "LIC Life Insurance",
+                  "description": "Term, endowment and pension plans from LIC with expert guidance and personalised recommendations.",
+                  "provider": { "@id": "https://lifecodeacademyinnovations.vercel.app/#insurance" }
+                }
+              ]
+            })
+          }}
+        />
+      </Head>
+
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -220,30 +287,24 @@ const LifeInsurance = () => {
                           {policy.plans.map((plan, index) => (
                             <Link
                               key={index}
-                              to={`/plan-details/${encodeURIComponent(plan)}`}
+                              href={`/planDetailsPage/${encodeURIComponent(plan)}`}
                               className="inline-flex"
                             >
                               <Badge
                                 variant="secondary"
-                                className="inline-flex items-center gap-2 text-xs cursor-pointer 
-                                      hover:bg-gray-300 transition-colors transform hover:scale-105 
-                                      active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                                      focus:ring-opacity-50 bg-gray-100 hover:bg-blue-100 hover:text-blue-700 
-                                      border border-gray-300 hover:border-blue-400 px-3 py-1.5 rounded-full 
-                                      font-medium shadow-sm hover:shadow-md"
+                                className="inline-flex items-center gap-2 text-xs cursor-pointer hover:bg-gray-300 transition-colors transform hover:scale-95 outline-none focus:ring-2 focus:ring-opacity-50 bg-gray-100 hover:bg-blue-100 border border-gray-200 hover:border-blue-400 px-3 font-medium shadow-sm hover:shadow-md"
                               >
-                                <EyeIcon className="w-4 h-4" />
                                 {plan}
                               </Badge>
-
                             </Link>
+
                           ))}
                         </div>
                       </div>
                     )}
 
                     <Button className="w-full bg-blue-600 hover:bg-blue-700" asChild>
-                      <Link to="/contact">
+                      <Link href="/contact">
                         Get Quote for {policy.title} <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
@@ -291,10 +352,10 @@ const LifeInsurance = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-400">
-              <Link to="/contact">Get Free Consultation</Link>
+              <Link href="/contact">Get Free Consultation</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-blue-600 hover:bg-gray-400">
-              <Link to="/faq">View FAQ</Link>
+              <Link href="/faq">View FAQ</Link>
             </Button>
           </div>
         </div>

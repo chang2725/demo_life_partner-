@@ -2,7 +2,8 @@
 import { Award, Users, Clock, Heart, CheckCircle, Shield, Briefcase, GraduationCap } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';;
+import Head from 'next/head';
 
 const About = () => {
   const achievements = [
@@ -44,6 +45,63 @@ const About = () => {
 
   return (
     <div>
+      <Head>
+        <title>About Rajesh Kumar — LIC Agent Bangalore</title>
+        <meta name="description" content="Learn about Rajesh Kumar, certified LIC agent in Bangalore — experience, certifications & client success stories to secure your family's future." />
+        <meta name="keywords" content="Rajesh Kumar LIC agent, LIC agent Bangalore, about LIC agent, LIC advisor Bangalore, certified LIC agent, insurance expert Bangalore" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/about" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="About Rajesh Kumar — LIC Agent Bangalore" />
+        <meta property="og:description" content="Learn about Rajesh Kumar, certified LIC agent in Bangalore — experience, certifications & client success stories." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/about" />
+        <meta property="og:image" content="https://lifecodeacademyinnovations.vercel.app/og-about.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Rajesh Kumar — LIC Agent Bangalore" />
+        <meta name="twitter:description" content="Get to know Rajesh Kumar — licensed LIC agent serving Bangalore with trusted insurance guidance." />
+        <meta name="twitter:image" content="https://lifecodeacademyinnovations.vercel.app/og-about.jpg" />
+
+        {/* JSON-LD: InsuranceAgency + Person */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "InsuranceAgency",
+                  "@id": "https://lifecodeacademyinnovations.vercel.app/#insurance",
+                  "name": "Rajesh Kumar - LIC Agent",
+                  "url": "https://lifecodeacademyinnovations.vercel.app/",
+                  "logo": "https://lifecodeacademyinnovations.vercel.app/logo.png",
+                  "telephone": "REPLACE_PHONE",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Bangalore",
+                    "addressRegion": "Karnataka",
+                    "addressCountry": "IN"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "name": "Rajesh Kumar",
+                  "jobTitle": "LIC Agent / Insurance Advisor",
+                  "worksFor": { "@id": "https://lifecodeacademyinnovations.vercel.app/#insurance" },
+                  "sameAs": [
+                    "https://www.linkedin.com/in/REPLACE",
+                    "https://www.facebook.com/REPLACE"
+                  ]
+                }
+              ]
+            })
+          }}
+        />
+      </Head>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +112,7 @@ const About = () => {
                 <span className="text-blue-600 block">LIC Agent</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                With over 15 years of experience in life insurance, I'm dedicated to helping families 
+                With over 15 years of experience in life insurance, I'm dedicated to helping families
                 secure their financial future with the right LIC policies.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -100,22 +158,22 @@ const About = () => {
           </div>
           <div className="space-y-8 text-lg text-gray-700 leading-relaxed">
             <p>
-              My journey with LIC began 15 years ago when I witnessed the financial struggles my neighbor's family 
-              faced after an unexpected tragedy. That moment made me realize the critical importance of life insurance 
+              My journey with LIC began 15 years ago when I witnessed the financial struggles my neighbor's family
+              faced after an unexpected tragedy. That moment made me realize the critical importance of life insurance
               in protecting families from financial hardship.
             </p>
             <p>
-              I started as a part-time LIC agent while working in the banking sector. The satisfaction of helping 
-              families secure their future motivated me to pursue this as my full-time career. Over the years, I've 
+              I started as a part-time LIC agent while working in the banking sector. The satisfaction of helping
+              families secure their future motivated me to pursue this as my full-time career. Over the years, I've
               helped over 1000 families choose the right insurance policies that match their needs and budget.
             </p>
             <p>
-              My approach is simple: I listen to your concerns, understand your financial goals, and recommend policies 
-              that truly benefit you. I believe in building long-term relationships based on trust, transparency, and 
+              My approach is simple: I listen to your concerns, understand your financial goals, and recommend policies
+              that truly benefit you. I believe in building long-term relationships based on trust, transparency, and
               genuine care for my clients' well-being.
             </p>
             <p>
-              Today, I'm proud to be recognized as one of LIC's top-performing agents in Delhi, but my greatest 
+              Today, I'm proud to be recognized as one of LIC's top-performing agents in Delhi, but my greatest
               achievement is the peace of mind I've helped bring to families across the region.
             </p>
           </div>
@@ -158,7 +216,7 @@ const About = () => {
                   <h4 className="font-semibold text-lg text-gray-900">Senior LIC Agent</h4>
                   <p className="text-blue-600 font-medium">2015 - Present</p>
                   <p className="text-gray-600 mt-2">
-                    Full-time LIC agent specializing in life insurance, investment planning, and retirement solutions. 
+                    Full-time LIC agent specializing in life insurance, investment planning, and retirement solutions.
                     Consistently ranked among top 10% performers.
                   </p>
                 </div>
@@ -166,7 +224,7 @@ const About = () => {
                   <h4 className="font-semibold text-lg text-gray-900">Part-time LIC Agent</h4>
                   <p className="text-gray-600 font-medium">2009 - 2015</p>
                   <p className="text-gray-600 mt-2">
-                    Started as part-time agent while working in banking. Built foundation of client relationships 
+                    Started as part-time agent while working in banking. Built foundation of client relationships
                     and product knowledge.
                   </p>
                 </div>
@@ -192,7 +250,7 @@ const About = () => {
               <div className="bg-blue-50 p-6 rounded-lg">
                 <h4 className="font-semibold text-lg text-gray-900 mb-2">Mission Statement</h4>
                 <p className="text-gray-700 italic">
-                  "To empower every family with financial security through personalized insurance solutions, 
+                  "To empower every family with financial security through personalized insurance solutions,
                   ensuring their dreams remain protected against life's uncertainties."
                 </p>
               </div>
@@ -210,10 +268,10 @@ const About = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-400">
-              <Link to="/contact">Schedule Consultation</Link>
+              <Link href="/contact">Schedule Consultation</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-blue-600 hover:bg-gray-400 hover:text-blue-600">
-              <Link to="/life-insurance">View Policies</Link>
+              <Link href="/life-insurance">View Policies</Link>
             </Button>
           </div>
         </div>

@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import React, { useEffect, useState } from 'react';
+import { API_BASE_URL, AgentId } from "@/pages/config";
+import Head from 'next/head';
 
 interface NewsItem {
   headline: string;
@@ -24,15 +26,6 @@ interface QuickUpdate {
 const News = () => {
   const [newsArticles, setNewsArticles] = useState<NewsItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
-
-  const AgentId = import.meta.env.VITE_API_AUTH_TOKEN || 'http://localhost:3000/api';
-  const quickUpdates: QuickUpdate[] = [
-    { title: 'Premium Payment Deadline Extended', description: 'LIC extends grace period for premium payments due to festive season', type: 'info' },
-    { title: 'New Branch Opening', description: 'LIC opens 50 new branches across tier-2 and tier-3 cities', type: 'success' },
-    { title: 'System Maintenance Notice', description: 'Online services will be temporarily unavailable on Jan 25th from 2-4 AM', type: 'warning' }
-  ];
-
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -51,10 +44,10 @@ const News = () => {
 
   const formatDate = (dateString: string) => {
     try {
-      return new Date(dateString).toLocaleDateString('en-IN', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      return new Date(dateString).toLocaleDateString('en-IN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       });
     } catch {
       return dateString;
@@ -91,13 +84,13 @@ const News = () => {
 
   const getUpdateStyles = (type: string) => {
     switch (type) {
-      case 'info': 
+      case 'info':
         return 'bg-gradient-to-r from-blue-50 to-cyan-50 border-l-blue-400 text-blue-700';
-      case 'success': 
+      case 'success':
         return 'bg-gradient-to-r from-green-50 to-emerald-50 border-l-green-400 text-green-700';
-      case 'warning': 
+      case 'warning':
         return 'bg-gradient-to-r from-orange-50 to-amber-50 border-l-orange-400 text-orange-700';
-      default: 
+      default:
         return 'bg-gradient-to-r from-gray-50 to-slate-50 border-l-gray-400 text-gray-700';
     }
   };
@@ -125,6 +118,67 @@ const News = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        <title>LIC News & Updates — Policies & Announcements</title>
+        <meta name="description" content="Latest LIC news, policy updates, and announcements. Stay informed with verified insurance updates and guidelines." />
+        <meta name="keywords" content="LIC news, LIC updates, insurance announcements, LIC policy change, LIC circulars, LIC press release" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://lifecodeacademyinnovations.vercel.app/news" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="LIC News & Updates — Policies & Announcements" />
+        <meta property="og:description" content="Latest LIC news, policy updates, and announcements for policyholders and agents." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lifecodeacademyinnovations.vercel.app/news" />
+        <meta property="og:image" content="https://lifecodeacademyinnovations.vercel.app/og-news.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="LIC News & Updates — Policies & Announcements" />
+        <meta name="twitter:description" content="Stay updated with the latest LIC policies, circulars, and insurance news." />
+        <meta name="twitter:image" content="https://lifecodeacademyinnovations.vercel.app/og-news.jpg" />
+
+        {/* JSON-LD: CollectionPage with sample itemList (replace with real articles) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "name": "LIC News & Updates",
+              "url": "https://lifecodeacademyinnovations.vercel.app/news",
+              "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": [
+                  {
+                    "@type": "NewsArticle",
+                    "headline": "LIC updates premium rates for 2025",
+                    "url": "https://lifecodeacademyinnovations.vercel.app/news/lic-updates-premium-rates-2025",
+                    "datePublished": "2025-01-10",
+                    "description": "Summary of LIC premium changes and what policyholders should know."
+                  },
+                  {
+                    "@type": "NewsArticle",
+                    "headline": "New LIC rider introduced for critical illness",
+                    "url": "https://lifecodeacademyinnovations.vercel.app/news/lic-critical-illness-rider",
+                    "datePublished": "2024-11-08",
+                    "description": "Overview of the new rider and eligibility conditions."
+                  },
+                  {
+                    "@type": "NewsArticle",
+                    "headline": "LIC digital services expanded for easier claims",
+                    "url": "https://lifecodeacademyinnovations.vercel.app/news/lic-digital-claims-update",
+                    "datePublished": "2024-08-22",
+                    "description": "How LIC has simplified digital claims and what it means for you."
+                  }
+                ]
+              }
+            })
+          }}
+        />
+      </Head>
+
+
       {/* Enhanced Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-24 overflow-hidden">
         {/* Background Pattern */}
@@ -133,7 +187,7 @@ const News = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-4000"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm border border-blue-400/30">
@@ -149,45 +203,11 @@ const News = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Stay informed with the latest news, announcements, and developments from 
-              <span className="text-blue-300 font-semibold"> Life Insurance Corporation of India</span>. 
+              Stay informed with the latest news, announcements, and developments from
+              <span className="text-blue-300 font-semibold"> Life Insurance Corporation of India</span>.
               Get insights on new policies, market trends, and regulatory updates.
             </p>
-           
-          </div>
-        </div>
-      </section>
 
-      {/* Enhanced Quick Updates */}
-      <section className="py-12 bg-gradient-to-r from-gray-50 to-blue-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 flex items-center">
-            <div className="p-2 bg-blue-100 rounded-lg mr-3">
-              <AlertCircle className="h-6 w-6 text-blue-600" />
-            </div>
-            Quick Updates
-            <Badge className="ml-4 bg-red-100 text-red-600 animate-pulse">Live</Badge>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {quickUpdates.map((update, index) => {
-              const IconComponent = getUpdateIcon(update.type);
-              return (
-                <div 
-                  key={index} 
-                  className={`p-6 rounded-xl border-l-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ${getUpdateStyles(update.type)}`}
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="p-2 bg-white/80 rounded-lg">
-                      <IconComponent className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-gray-900 mb-2">{update.title}</h3>
-                      <p className="text-sm leading-relaxed opacity-90">{update.description}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>
@@ -207,21 +227,21 @@ const News = () => {
               <span className="text-blue-700 font-medium">All Categories</span>
             </div>
           </div>
-          
+
           {/* News Grid */}
           {isLoading ? (
             <LoadingSkeleton />
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {newsArticles.map((article, idx) => (
-                <Card 
-                  key={idx} 
+                <Card
+                  key={idx}
                   className="group h-full flex flex-col overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white border-0 shadow-lg"
                 >
                   <div className="relative aspect-video overflow-hidden">
-                    <img 
-                      src={article.imageUrl} 
-                      alt={article.headline} 
+                    <img
+                      src={article.imageUrl}
+                      alt={article.headline}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -233,20 +253,20 @@ const News = () => {
                       {article.source ? getSourceDisplayName(article.source) : 'News'}
                     </Badge>
                   </div>
-                  
+
                   <CardHeader className="flex-grow p-6 pb-4">
                     <CardTitle className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
                       {article.headline}
                     </CardTitle>
                   </CardHeader>
-                  
+
                   <CardContent className="p-6 pt-0">
                     <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
                       <div className="flex items-center">
                         <Calendar className="inline h-4 w-4 mr-2" />
-                        {article.rawTimeText ? formatRawTimeText(article.rawTimeText) : 
-                         article.publishedAt ? formatDate(article.publishedAt) : 
-                         formatDate(new Date().toISOString())}
+                        {article.rawTimeText ? formatRawTimeText(article.rawTimeText) :
+                          article.publishedAt ? formatDate(article.publishedAt) :
+                            formatDate(new Date().toISOString())}
                       </div>
                       {article.author && (
                         <div className="flex items-center">
@@ -259,14 +279,14 @@ const News = () => {
                       {article.summary || `${article.headline} - Click to read the complete article and stay updated with the latest developments.`}
                     </p>
                   </CardContent>
-                  
+
                   <CardFooter className="p-6 pt-0">
-                    <Button 
-                      asChild 
+                    <Button
+                      asChild
                       className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
                     >
                       <a href={article.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                        Read Full Article 
+                        Read Full Article
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
@@ -275,7 +295,7 @@ const News = () => {
               ))}
             </div>
           )}
-          
+
           {/* Enhanced Empty State */}
           {!isLoading && newsArticles.length === 0 && (
             <div className="text-center py-20">
@@ -301,13 +321,13 @@ const News = () => {
               We curate news from India's most respected financial and business publications
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
             {[
               'Economic Times', 'Business Standard', 'Financial Express', 'Mint',
               'Moneycontrol', 'Times of India', 'Hindu Business Line', 'LIC Official'
             ].map((source, index) => (
-              <div 
+              <div
                 key={source}
                 className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -320,7 +340,7 @@ const News = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <p className="text-gray-400 text-sm">
               News content is aggregated from multiple sources for comprehensive coverage
