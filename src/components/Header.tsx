@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { API_BASE_URL, AgentId } from "@/pages/config";
+import { API_BASE_URL, AgentId } from "@/config";
 
 
 import { Menu, X, Shield, Phone, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';

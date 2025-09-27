@@ -1,8 +1,15 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/404": "pages/404.js",
-  "/about": "pages/about.js"
+  "/404": "pages/404.html",
+  "/about": "pages/about.html",
+  "/blog": "pages/blog.html",
+  "/contact": "pages/contact.html",
+  "/faq": "pages/faq.html",
+  "/home": "pages/home.html",
+  "/": "pages/index.html",
+  "/lifeInsurance": "pages/lifeInsurance.html",
+  "/news": "pages/news.html",
+  "/planDetailsPage/[planName]": "pages/planDetailsPage/[planName].html",
+  "/_document": "pages/_document.js"
 }

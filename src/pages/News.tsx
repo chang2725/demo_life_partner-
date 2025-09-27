@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import React, { useEffect, useState } from 'react';
-import { API_BASE_URL, AgentId } from "@/pages/config";
+import { API_BASE_URL, AgentId } from "@/config";
 import Head from 'next/head';
 
 interface NewsItem {

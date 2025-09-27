@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';;
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { API_BASE_URL, AgentId } from "@/pages/config";
+import { API_BASE_URL, AgentId } from "@/config";
 import Head from 'next/head';
 
 

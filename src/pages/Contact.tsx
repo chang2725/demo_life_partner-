@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useState } from 'react';
 import axios from 'axios';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { API_BASE_URL, AgentId } from "@/pages/config";
+import { API_BASE_URL, AgentId } from "@/config";
 import Head from 'next/head';
 
 

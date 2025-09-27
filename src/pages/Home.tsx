@@ -9,7 +9,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { API_BASE_URL, AgentId } from "@/pages/config";
+import { API_BASE_URL, AgentId } from "@/config";
 import Head from 'next/head';
 
 
