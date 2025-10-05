@@ -131,7 +131,7 @@ const Header = () => {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">LIC Agent</span>
-                <span className="text-xs text-gray-600">Rathi Saravanan ✨</span>
+                <span className="text-xs text-gray-600">Raththi Saravanan ✨</span>
               </div>
             </Link>
 

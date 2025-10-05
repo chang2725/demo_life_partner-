@@ -1,15 +1,9 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html",
-  "/about": "pages/about.html",
-  "/blog": "pages/blog.html",
-  "/contact": "pages/contact.html",
-  "/faq": "pages/faq.html",
-  "/home": "pages/home.html",
-  "/": "pages/index.html",
-  "/lifeInsurance": "pages/lifeInsurance.html",
-  "/news": "pages/news.html",
-  "/planDetailsPage/[planName]": "pages/planDetailsPage/[planName].html",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/contact": "pages/contact.js",
+  "/news": "pages/news.js",
+  "/blog": "pages/blog.js"
 }

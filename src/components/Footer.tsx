@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { Shield, Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Shield, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,16 +13,22 @@ const Footer = () => {
               <Shield className="h-8 w-8 text-blue-400" />
               <div>
                 <h3 className="font-bold text-lg">LIC Agent</h3>
-                <p className="text-sm text-gray-400">Rajesh Kumar</p>
+                <p className="text-sm text-gray-400">Raththi Saravanan</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm">
               Securing your family's future with trusted LIC policies and expert financial guidance.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
-              <Linkedin className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
+                <a href="https://www.facebook.com/srathi.financialadvisor" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
+                </a>
+                <a href="https://www.instagram.com/rathi.saravanan.rshv_we4/" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
+                </a>
+                <a href="https://www.youtube.com/@GetFinancialindependence" target="_blank" rel="noopener noreferrer">
+                  <Youtube className="h-5 w-5 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
+                </a>
             </div>
           </div>
 
@@ -57,17 +63,17 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-blue-400 mt-0.5" />
                 <div>
-                  <p className="text-gray-400">+91 98765 43210</p>
-                  <p className="text-gray-400">+91 87654 32109</p>
+                  <p className="text-gray-400">+91 99019 97606</p>
+                  <p className="text-gray-400">+91 73377 36767</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-blue-400 mt-0.5" />
-                <p className="text-gray-400">rajesh.lic@gmail.com</p>
+                <p className="text-gray-400">mailmerathi.saravanan@gmail.com</p>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-blue-400 mt-0.5" />
-                <p className="text-gray-400">123, Business Center,<br />New Delhi - 110001</p>
+                <p className="text-gray-400">Siddartha Sapphire,<br />Kudlu Main Road,<br />Bangalore - 560068</p>
               </div>
             </div>
           </div>

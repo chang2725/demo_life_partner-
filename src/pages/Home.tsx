@@ -285,7 +285,7 @@ const Home = () => {
                 Your Trusted New LIC Agent
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                Hi, I'm Rathi Saravanan
+                Hi, I'm Raththi Saravanan
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 block animate-pulse">
                   Your LIC Advisor ✨
                 </span>

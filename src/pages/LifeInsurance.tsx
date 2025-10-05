@@ -292,8 +292,14 @@ const LifeInsurance = () => {
                             >
                               <Badge
                                 variant="secondary"
-                                className="inline-flex items-center gap-2 text-xs cursor-pointer hover:bg-gray-300 transition-colors transform hover:scale-95 outline-none focus:ring-2 focus:ring-opacity-50 bg-gray-100 hover:bg-blue-100 border border-gray-200 hover:border-blue-400 px-3 font-medium shadow-sm hover:shadow-md"
+                                className="text-xs cursor-pointer hover:bg-gray-300 transition-colors inline-flex items-center gap-2 text-xs cursor-pointer 
+                                      hover:bg-gray-300 transition-colors transform hover:scale-105 
+                                      active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                                      focus:ring-opacity-50 bg-gray-100 hover:bg-blue-100 hover:text-blue-700 
+                                      border border-gray-300 hover:border-blue-400 px-3 py-1.5 rounded-full 
+                                      font-medium shadow-sm hover:shadow-md"
                               >
+                                <EyeIcon className="w-4 h-4" />
                                 {plan}
                               </Badge>
                             </Link>
