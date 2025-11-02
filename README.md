@@ -1,73 +1,49 @@
-# Welcome to your Lovable project
+Hey everyone, welcome to the LIC_WebDesk .
+Basically, LIC_WebDesk is a digital platform designed exclusively for LIC agents — a place to showcase their area of expertise, track record, and achievements. It’s all about building trust and credibility with clients through a clean, dynamic, and professional online presence.
 
-## Project info
+The highlight of LIC_WebDesk_Hub is that it’s fully dynamic. You can instantly update content like banners, testimonials, blogs, insurance catalogs, plan details, and even live news — automatically fetched via web scraping from leading news agencies. Plus, it includes an integrated inquiry form for client interactions.
 
-**URL**: https://lovable.dev/projects/097020cd-73eb-4835-8055-cc7d8f5d6184
+🌐 Platform Overview
 
-## How can I edit this code?
+LIC_WebDesk is built with two main modules:
 
-There are several ways of editing your application.
+My Agent Portal (Agent Dashboard)
 
-**Use Lovable**
+Life Partner (Customer Website)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/097020cd-73eb-4835-8055-cc7d8f5d6184) and start prompting.
+💠 Life Partner – Customer Website
 
-Changes made via Lovable will be committed automatically to this repo.
+This is the public-facing site where your clients see your achievements, plans, and updates.
+It’s mobile-friendly, features smooth animations, and carries a professional design aimed at enhancing client trust.
 
-**Use your preferred IDE**
+All sections — including banners, blogs, testimonials, and insurance plans — are completely dynamic and can be updated anytime from your Agent Portal.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+🧭 My Agent Portal – Admin Dashboard
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+This is where the real power lies.
+Here, you (the agent) have full control over all the data displayed on your customer site.
+You can create, edit, or delete any content — from your hero section to your blogs and testimonials — all in real time.
 
-Follow these steps:
+Hero Section:
+This section is dynamic too. You can add, edit, or delete content directly from the portal.
+For images, simply upload them to Dropbox and use the generated link — fast, easy, and efficient.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Other Dynamic Sections:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Blogs
 
-# Step 3: Install the necessary dependencies.
-npm i
+Life Insurance Catalogs
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Plan Details
 
-**Edit a file directly in GitHub**
+Testimonials
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Contact & Inquiry Forms
 
-**Use GitHub Codespaces**
+You can also view and manage all customer inquiries directly in your portal.
+There’s even a policyholder tracking feature, letting you monitor client data and inquiries with ease.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+⚡ In Summary
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/097020cd-73eb-4835-8055-cc7d8f5d6184) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+LIC_WebDesk is not just a website — it’s your digital identity as an LIC agent.
+It builds trust, saves time, and lets you focus on what matters most — growing your client base and maintaining strong relationships.
